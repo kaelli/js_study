@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    var LinkButton = React.createClass({
+        getInitialState :function () {
+            return {linked:false};
+        },
+        handleClick :function () {
+            debugger;
+            this.setState({linked : !this.state.linked});
+        },
+        render : function () {
+            debugger;
+            var text = this.state.linked?"linked":"not linked";
+            return <p onClick={this.handleClick}>click here to toggle:{text}</p>;
+        }
+        }
+    );
+    ReactDOM.render(
+        <LinkButton/>,
+        document.getElementById('root')
+    );
+</script>
+
+</body>
+</html>
