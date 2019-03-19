@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!--适配移动端-->
+    <script src="../common/jquery-3.3.1.min.js"></script><!-- 必须按照这种格式-->
+    <script src="../common/template-web.js"></script><!-- 必须按照这种格式-->
+    <script src="template/questTemplate.js"></script><!-- 必须按照这种格式-->
+    <script src="js/question.js"></script><!-- 必须按照这种格式-->
+
+    <link rel="stylesheet" type="text/css" href="first.css">
+    <title>Title</title>
+</head>
+<body>
+<div class="cateContent" id="cateContent">
+</div>
+
+<div class="questionContent" id="question">
+</div>
+
+</body>
+
+<script id="template" type="text/html">
+    {{if user}}
+    <h2>{{user.name}}</h2>
+    {{/if}}
+</script>
+
+<script id="questionTemplate" type="text/html">
+    {{each cateContents}}
+    <div class="level-1">
+        <div>{{$value}}</div>
+        <div class="level-2">
+            {{each quesContents}}
+            <a href="">
+                <span class="flex-1">{{$value}}</span>
+                <i class="icon">&gt;</i>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+    {{/each}}
+</script>
+
+<div class="level-1">
+    <div>一级标标题题</div>
+    <div class="level-2">
+        <a href="">
+            <span class="flex-1">二级标题</span>
+            <i class="icon">&gt;</i>
+        </a>
+        <a href="">
+            <span class="flex-1">二级标题</span>
+            <i class="icon">&gt;</i>
+        </a>
+    </div>
+</div>
+
+<script>
+    var data = {'user': {"name": "test"}}
+    var html = template('template', data);
+    //        document.getElementById('cateContent').innerHTML=html
+    //    import {result} from 'js/question'
+    var result = {
+        'cateContents': ["一级标题", "一级标题"],
+        'quesContents': ["二级标题", "二级标题"]
+    }
+    var questionTtml = template('questionTemplate', result);
+    document.getElementById('question').innerHTML = questionTtml
+</script>
+</html>
