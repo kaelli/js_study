@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!--适配移动端-->
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="first.css"/><!-- rel="stylesheet" 不能少，会引起加载失效-->
+    <script type="text/javascript" src="../common/ejs.min.js"></script>
+    <!--下面这句没有效果-->
+    <!--<script id="questionTemplate1" type="text/html" src="template/questionTemplate.html"></script>-->
+    <script id="tpl" type="text/html">
+        <h1><%=title %></h1>
+        <ul>
+
+            <% for (var i=0; i<contents.length; i++) { %>
+
+            <li> <a href= 'contents/<%=contents[i] %>' >
+
+                <%= contents[i] %></a>
+
+            </li>
+
+            <% } %>
+        </ul>
+
+    </script>
+
+    <script id="question" type="text/html">
+
+        <% for (var i=0; i<titles.length; i++) { %>
+            <div class="level-1">
+                <div><%=titles[i] %></div>
+                <div class="level-2">
+                    <% for (var j=0; j<contents.length; j++) { %>
+                        <a href="">
+                            <span class="flex-1"><%=contents[j] %></span>
+                            <i class="icon">&gt;</i>
+                        </a>
+                    <% } %>
+                </div>
+            </div>
+        <% } %>
+
+    </script>
+
+
+    <script type="text/javascript">
+        function myfunction() {
+            var data = {"title":"一级标题","contents":["二级标题","二级标题","二级标题"]};
+            var result = {"titles":["一级标题","一级标题"],"contents":["二级标题","二级标题","二级标题"]};
+            const html = document.getElementById('question').innerHTML;
+            var content = ejs.render(html,result)
+            //alert(content);
+            document.getElementById("div1").innerHTML = content;
+        }
+    </script>
+</head>
+<body>
+<button onclick="myfunction()">点击</button>
+<div id="div1"></div >
+
+
+<!--<div class="level-1">-->
+    <!--<div>一级标标题题</div>-->
+    <!--<div class="level-2">-->
+        <!--<a href="">-->
+            <!--<span class="flex-1">二级标题</span>-->
+            <!--<i class="icon">&gt;</i>-->
+        <!--</a>-->
+        <!--<a href="">-->
+            <!--<span class="flex-1">二级标题</span>-->
+            <!--<i class="icon">&gt;</i>-->
+        <!--</a>-->
+    <!--</div>-->
+<!--</div>-->
+
+</body>
+</html>
