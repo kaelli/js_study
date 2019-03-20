@@ -53,3 +53,48 @@ html,css,js的基本使用
 ```
 
 > 注意template()函数第一个参数是模版id
+
+# ejs demo
+主要步骤
+* 引入ejs.min.js
+* 构建模版代码
+* 获取html 模版代码 并渲染html内容
+* 绑定html内容到指定的div
+
+
+引入template-web.js
+
+```javascript
+ <script src="../common/ejs.min.js"></script>
+```
+
+构建模版代码
+
+```javascript
+  <script id="question" type="text/html">
+ 
+         <% for (var i=0; i<titles.length; i++) { %>
+             <div class="level-1">
+                 <div><%=titles[i] %></div>
+                 <div class="level-2">
+                     <% for (var j=0; j<contents.length; j++) { %>
+                         <a href="">
+                             <span class="flex-1"><%=contents[j] %></span>
+                             <i class="icon">&gt;</i>
+                         </a>
+                     <% } %>
+                 </div>
+             </div>
+         <% } %>
+ 
+     </script>
+```
+
+获取和绑定模版
+
+```javascript
+     var result = {"titles":["一级标题","一级标题"],"contents":["二级标题","二级标题","二级标题"]};
+     const html = document.getElementById('question').innerHTML;
+     var content = ejs.render(html,result)
+     document.getElementById("div1").innerHTML = content;
+```
