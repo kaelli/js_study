@@ -100,4 +100,4 @@ html,css,js的基本使用
 ```
 
 # webpack demo
-[学习文档]('./webpack_tool/app/README.md')
+[学习文档](webpack_tool/app/README.md)
