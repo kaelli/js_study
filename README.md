@@ -98,3 +98,6 @@ html,css,js的基本使用
      var content = ejs.render(html,result)
      document.getElementById("div1").innerHTML = content;
 ```
+
+# webpack demo
+[学习文档]('./webpack_tool/app/README.md')
